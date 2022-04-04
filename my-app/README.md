@@ -8,7 +8,7 @@ Those 2 props will receive a string as a parameter and return an Element (JSX.El
 
 Those 2 props should be optionnal (use `?` when you declare the types)
 
-If the props are not passed, use the actual rendering (<div className={styles.value}>{selected}</div> for selected, <div key={item} onClick={() => onSelected(item)}>{item}</div> for the item)
+If the props are not passed, use the actual rendering (`<div className={styles.value}>{selected}</div>` for selected, `<div key={item} onClick={() => onSelected(item)}>{item}</div>` for the item)
 
 If the props are passed call them to do the render in `Select`, for example render the items in a `<b>` element
 

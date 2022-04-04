@@ -2,14 +2,12 @@ import React, { Component } from 'react';
 import Button from './Button';
 import Counter from './Counter';
 
-type Props = {
-
-}
+type Props = {};
 
 type State = {
   name: string;
   count: number;
-}
+};
 
 class RenderProps extends Component {
   state: State = {
@@ -26,7 +24,7 @@ class RenderProps extends Component {
     this.setState({
       count: count + step,
     });
-  }
+  };
   render() {
     const { count } = this.state;
 
@@ -36,7 +34,6 @@ class RenderProps extends Component {
         <Button>
           <b>Value</b>
         </Button>
-
         <Counter count={count} onIncrement={this.handleIncrement} renderCount={(c) => <b>{c}</b>} />
       </div>
     );
