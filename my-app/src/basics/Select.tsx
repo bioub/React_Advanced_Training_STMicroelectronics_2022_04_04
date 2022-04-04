@@ -1,14 +1,46 @@
 import React, { Component } from 'react';
+import classNames from 'classnames';
 
-class Select extends Component {
-  // constructor(props) {
-  //   super(props);
-  // }
+type Props = {
+  selected: string;
+  items: string[];
+  onSelected(item: string): void;
+}
+
+type State = {
+  open: boolean;
+}
+
+class Select extends Component<Props, State> {
+  state: State = {
+    open: false,
+  };
+  handleOpen = () => {
+    const { open } = this.state;
+    this.setState({
+      open: !open,
+    });
+  }
   render() {
-    // this.props
+    const { selected, items, onSelected } = this.props;
+    const { open } = this.state;
+
+    // const array = [];
+
+    // for (const item of items) {
+    //   array.push(<div>{item}</div>)
+    // }
+
+    // const array = items.map((item) => <div>{item}</div>);
+
     return (
-      <div className="Select">
-        Select Component
+      <div className="Select" onClick={this.handleOpen}>
+        <div className="selected">
+          {selected}
+        </div>
+        {open && <div className="menu">
+          {items.map((item) => <div key={item} onClick={() => onSelected(item)}>{item}</div>)}  
+        </div>}
       </div>
     );
   }

@@ -1,21 +1,35 @@
 import React, { Component, PointerEvent } from 'react';
 
-class Counter extends Component {
-  state = {
-    count: 0,
-  };
-  handleClick = (event: PointerEvent<HTMLButtonElement>) => { // Counter.prototype.handleClick
-    this.setState({ count: this.state.count + event.clientX });
-  };
-  render() {
-    const { count } = this.state;
+type Props = {
+  count: number;
+  onIncrement(step: number): void;
+};
 
-    return (
-      <button className="Counter" onClick={this.handleClick}>
-        {count}
-      </button>
-    );
-  }
+// class Counter extends Component<Props> {
+//   handleClick = (event: PointerEvent<HTMLButtonElement>) => { // Counter.prototype.handleClick
+//     const { onIncrement } = this.props;
+//     onIncrement(event.clientX);
+//   };
+//   render() {
+//     const { count } = this.props;
+
+//     return (
+//       <button className="Counter" onClick={this.handleClick}>
+//         {count}
+//       </button>
+//     );
+//   }
+// }
+
+function Counter({ count, onIncrement }: Props) {
+  const handleClick = (event: PointerEvent<HTMLButtonElement>) => {
+    onIncrement(event.clientX);
+  };
+  return (
+    <button className="Counter" onClick={handleClick}>
+      {count}
+    </button>
+  );
 }
 
 // buttonEl.addEventListener('click', () => {
