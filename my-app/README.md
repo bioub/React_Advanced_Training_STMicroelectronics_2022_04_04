@@ -1,46 +1,17 @@
-# Getting Started with Create React App
+# Exercises
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Render Props
 
-## Available Scripts
+In the `render-props` folder, edit the `Select` component so it will receive 2 new props : `renderSelected` and `renderItem`
 
-In the project directory, you can run:
+Those 2 props will receive a string as a parameter and return an Element (JSX.Element)
 
-### `npm start`
+Those 2 props should be optionnal (use `?` when you declare the types)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+If the props are not passed, use the actual rendering (<div className={styles.value}>{selected}</div> for selected, <div key={item} onClick={() => onSelected(item)}>{item}</div> for the item)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+If the props are passed call them to do the render in `Select`, for example render the items in a `<b>` element
 
-### `npm test`
+Then update `renderItem` so only the selected item should be bold.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Bonus : update `renderItem` so the Item should be use instead of `<div>` inside `Select` : <Item key={item} onClick={() => onSelected(item)}>{item}</Item>

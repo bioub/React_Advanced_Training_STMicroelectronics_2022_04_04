@@ -1,3 +1,4 @@
+import styles from './Select.module.css';
 import React, { Component } from 'react';
 import classNames from 'classnames';
 
@@ -35,11 +36,11 @@ class Select extends Component<Props, State> {
 
     return (
       <div className="Select" onClick={this.handleOpen}>
-        <div className="selected">
+        <div className={styles.selected}>
           {selected}
         </div>
-        {open && <div className="menu">
-          {items.map((item) => <div key={item} onClick={() => onSelected(item)}>{item}</div>)}  
+        {open && <div className={styles.menu}>
+          {items.map((item) => <div className={styles.item} key={item} onClick={() => onSelected(item)}>{item}</div>)}  
         </div>}
       </div>
     );
