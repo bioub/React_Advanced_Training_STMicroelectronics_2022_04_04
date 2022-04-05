@@ -1,12 +1,11 @@
 import React from 'react';
+import { hideable } from './hideable';
 
 type Props = {
   name?: string;
-  age?: number;
-  isTrainer?: boolean;
 }
 
-function Hello({ name = '', age = 0, isTrainer = false }: Props) {
+function Hello({ name = 'someone' }: Props) {
   // HTMLDivElement -> MDN
   // const divEl = document.createElement('div');
   // divEl.className = 'Hello';
@@ -18,5 +17,7 @@ function Hello({ name = '', age = 0, isTrainer = false }: Props) {
     </div>
   );
 }
+
+export const HideableHello = hideable(Hello);
 
 export default Hello;

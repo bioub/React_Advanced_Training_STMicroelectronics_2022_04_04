@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import Button from './Button';
+import Clock from './Clock';
 import Counter from './Counter';
+import Hello from './Hello';
+import Hideable from './Hideable';
 import Select from './Select';
 import SelectCustomItem from './SelectCustomItem';
 
@@ -37,6 +40,14 @@ class RenderProps extends Component {
           componentItem={SelectCustomItem}
         />
         <p>You have selected : {name}</p>
+
+        <Hideable defaultShow={false}>
+          <Clock />
+        </Hideable>
+
+        <Hideable defaultShow={false}>
+          <Hello name="Romain" />
+        </Hideable>
       </div>
     );
   }

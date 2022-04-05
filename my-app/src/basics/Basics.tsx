@@ -32,11 +32,19 @@ class Basics extends Component<Props, State> {
   }
   render() {
     const { name, count } = this.state;
+
+    const helloProps = {
+      name: 'Romain',
+      age: 36,
+      isTrainer: true,
+    }
+
     return (
       <div className="Basics">
         {/* React.createElement(Hello, { name: 'Romain' }) */}
-        {/* <Hello name="Romain" age={36} isTrainer={true} /> */}
-        {/* <Hello name="Romain" age={36} isTrainer /> */}
+        <Hello name="Romain" age={36} isTrainer={true} />
+        <Hello name="Romain" age={36} isTrainer />
+        <Hello {...helloProps} />
         <Hello name={name} />
         <Select items={['Romain', 'Konstantin', 'Samuel']} selected={name} onSelected={this.handleSelected} />
         <Clock />

@@ -2,11 +2,9 @@ import React from 'react';
 
 type Props = {
   name?: string;
-  age?: number;
-  isTrainer?: boolean;
 }
 
-function Hello({ name = '', age = 0, isTrainer = false }: Props) {
+function Hello({ name = 'someone' }: Props) {
   // HTMLDivElement -> MDN
   // const divEl = document.createElement('div');
   // divEl.className = 'Hello';
