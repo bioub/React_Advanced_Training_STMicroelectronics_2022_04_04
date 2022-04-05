@@ -41,3 +41,9 @@ Edit the JSX so `BaseComponent` will receive its props.
 In `Clock.tsx`, generate a `BlueClock` and a `RedClock` components using the `colored` HOC and use them in the `HigherOrderComponent` component.
 
 Bonus : improve your code so that the color doesn't come from the param of the `colored` HOC but from the props of the `EnhancedComponent`. The generated component should be named `ColoredClock` and used that way : `<ColoredClock color="red" />`
+
+## Hooks
+
+Refactor `Select` and `RegisterForm` as function and use `useState` to manipulate the state.
+
+In `RegisterForm`, `useState` should only be called once (pass on object representing a `User` with 3 keys : `username`, `gender` and `subscription`)
