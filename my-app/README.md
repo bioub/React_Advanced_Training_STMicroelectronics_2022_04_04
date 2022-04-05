@@ -15,3 +15,29 @@ If the props are passed call them to do the render in `Select`, for example rend
 Then update `renderItem` so only the selected item should be bold.
 
 Bonus : update `renderItem` in `Select` so the `Item` should be use instead of `<div>` inside `Select` : `<Item key={item} onClick={() => onSelected(item)}>{item}</Item>`
+
+## Higher Order Component
+
+Create a new Higher Order Component called `colored`
+
+This Higher Order Component will receive 2 params :
+- the Base Component to enhance
+- a color of type `string` (ex : `blue`,` #0000FF`, `rgb(0, 0, 255)`)
+
+In the render of the Higher Order Component, create a div element like this :
+
+```
+return (
+  <div style={{color: color}}>
+    <BaseComponent />
+  </div>
+);
+```
+
+(`BaseComponent` is the first param of the HOC, `color` the second)
+
+Edit the JSX so `BaseComponent` will receive its props.
+
+In `Clock.tsx`, generate a `BlueClock` and a `RedClock` components using the `colored` HOC and use them in the `HigherOrderComponent` component.
+
+Bonus : improve your code so that the color doesn't come from the param of the `colored` HOC but from the props of the `EnhancedComponent`. The generated component should be named `ColoredClock` and used that way : `<ColoredClock color="red" />`
