@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Button from './Button';
 import Counter from './Counter';
 import Select from './Select';
+import SelectCustomItem from './SelectCustomItem';
 
 type Props = {};
 
@@ -32,7 +33,8 @@ class RenderProps extends Component {
           selected={name}
           onSelected={this.handleSelected}
           renderSelected={(selected) => <b>{selected}</b>}
-          renderItem={(item) => (name === item) ? <b>{item}</b> : item}
+          //renderItem={(item) => (name === item) ? <b>{item}</b> : item}
+          componentItem={SelectCustomItem}
         />
         <p>You have selected : {name}</p>
       </div>
