@@ -6,6 +6,8 @@ type Props = {
   selected: string;
   items: string[];
   onSelected(item: string): void;
+  renderSelected?(selected: string): JSX.Element;
+  renderItem?(item: string): JSX.Element | string;
 };
 
 type State = {
@@ -23,7 +25,7 @@ class Select extends Component<Props, State> {
     });
   };
   render() {
-    const { selected, items, onSelected } = this.props;
+    const { selected, items, onSelected, renderSelected, renderItem } = this.props;
     const { open } = this.state;
 
     // const array = [];
@@ -36,12 +38,12 @@ class Select extends Component<Props, State> {
 
     return (
       <div className="Select" onClick={this.handleOpen}>
-        <div className={styles.selected}>{selected}</div>
+        <div className={styles.selected}>{renderSelected ? renderSelected(selected) : selected}</div>
         {open && (
           <div className={styles.menu}>
             {items.map((item) => (
               <div className={styles.item} key={item} onClick={() => onSelected(item)}>
-                {item}
+                {renderItem ? renderItem(item) : item}
               </div>
             ))}
           </div>

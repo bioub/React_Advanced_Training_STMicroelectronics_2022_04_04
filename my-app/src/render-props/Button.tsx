@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 
 type Props = {
-  children: JSX.Element,
+  color: string
 }
 
-function Button({ children }: Props) {
+function Button({ color, children }: PropsWithChildren<Props>) {
   return (
-    <div className="Button">
+    <div className="Button" style={{color}}>
       {children}
     </div>
   );

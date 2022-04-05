@@ -10,7 +10,7 @@ function Hello({ name = 'someone' }: Props) {
   // divEl.className = 'Hello';
 
   return (
-    // React.createElement('div', {className: 'Hello'}, 'Hello Component');
+    // React.createElement('div', {className: 'Hello'}, 'Hello ', React.createElement..);
     <div className="Hello">
       Hello {name}
     </div>
