@@ -1,4 +1,5 @@
 import React from 'react';
+import { colored } from './colored';
 import { hideable } from './hideable';
 
 type Props = {
@@ -19,5 +20,6 @@ function Hello({ name = 'someone' }: Props) {
 }
 
 export const HideableHello = hideable(Hello);
+export const ColoredHello = colored(Hello);
 
 export default Hello;

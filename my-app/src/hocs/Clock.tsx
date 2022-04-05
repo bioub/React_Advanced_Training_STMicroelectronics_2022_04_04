@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { colored } from './colored';
 import { hideable } from './hideable';
 
 type Props = {};
@@ -26,5 +27,6 @@ class Clock extends Component {
 }
 
 export const HideableClock = hideable(Clock);
+export const ColoredClock = colored(Clock);
 
 export default Clock;

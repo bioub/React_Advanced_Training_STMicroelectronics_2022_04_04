@@ -9,6 +9,7 @@ type State = {
 
 export function hideable<BaseProps>(BaseComponent: ComponentType<BaseProps>) {
   class EnhancedComponent extends Component<BaseProps & EnhancedProps, State> {
+    static displayName = `hideable(${BaseComponent.displayName ?? BaseComponent.name})`;
     state: State = {
       show: true,
     }
