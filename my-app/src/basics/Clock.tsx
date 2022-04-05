@@ -1,24 +1,53 @@
 import React, { Component } from 'react';
+import { format as formatDate } from 'date-fns'
 
-type Props = {};
+type Props = {
+  format?: string;
+  delay?: number;
+};
 
-class Clock extends Component {
-  state = {
-    format: 'HH:mm:ss',
+type State = {
+  now: Date;
+}
+
+class Clock extends Component<Props, State> {
+  state: State = {
     now: new Date(),
   };
+  interval: any;
   componentDidMount() {
-    setInterval(() => {
+    console.log('componentDidMount');
+    
+    const { delay = 1000 } = this.props;
+    this.interval = setInterval(() => {
       this.setState({
         now: new Date(),
       });
-    }, 1000);
+    }, delay);
+  }
+  componentDidUpdate(prevProps: Props) {
+    const { delay = 1000 } = this.props;
+
+    if (prevProps.delay === delay) {
+      return;
+    }
+    
+    clearInterval(this.interval);
+    this.interval = setInterval(() => {
+      this.setState({
+        now: new Date(),
+      });
+    }, delay);
+  }
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
   render() {
+    const { format = 'HH:mm:ss' } = this.props;
     const { now } = this.state;
     return (
       <div className="Clock">
-        Clock : {now.toLocaleTimeString()}
+        Clock : {formatDate(now, format)}
       </div>
     );
   }

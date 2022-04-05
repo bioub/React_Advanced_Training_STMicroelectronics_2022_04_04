@@ -1,6 +1,5 @@
 import styles from './Select.module.css';
-import React, { Component } from 'react';
-import classNames from 'classnames';
+import React, { useState } from 'react';
 
 type Props = {
   selected: string;
@@ -8,47 +7,29 @@ type Props = {
   onSelected(item: string): void;
 };
 
-type State = {
-  open: boolean;
-};
+function Select({ selected, items, onSelected }: Props) {
+  console.log('Select called');
+  
+  const [open, setOpen] = useState(false);
 
-class Select extends Component<Props, State> {
-  state: State = {
-    open: false,
+  const handleOpen = () => {
+    setOpen(!open);
   };
-  handleOpen = () => {
-    const { open } = this.state;
-    this.setState({
-      open: !open,
-    });
-  };
-  render() {
-    const { selected, items, onSelected } = this.props;
-    const { open } = this.state;
 
-    // const array = [];
-
-    // for (const item of items) {
-    //   array.push(<div>{item}</div>)
-    // }
-
-    // const array = items.map((item) => <div>{item}</div>);
-
-    return (
-      <div className="Select" onClick={this.handleOpen}>
-        <div className={styles.selected}>{selected}</div>
-        {open && (
-          <div className={styles.menu}>
-            {items.map((item) => (
-              <div className={styles.item} key={item} onClick={() => onSelected(item)}>
-                {item}
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
-    );
-  }
+  return (
+    <div className="Select" onClick={handleOpen}>
+      <div className={styles.selected}>{selected}</div>
+      {open && (
+        <div className={styles.menu}>
+          {items.map((item) => (
+            <div className={styles.item} key={item} onClick={() => onSelected(item)}>
+              {item}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
 }
 
 export default Select;

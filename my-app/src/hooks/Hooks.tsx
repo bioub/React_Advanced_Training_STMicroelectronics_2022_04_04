@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import Select from './Select';
 import Counter from './Counter';
 import Hello from './Hello';
+import RegisterForm from './RegisterForm';
+import ClockWithControls from './ClockWithControls';
+import { useLocation } from 'react-router-dom';
 
 // in a class component the state was an object
 // {
@@ -29,11 +32,18 @@ function Hooks() {
   const [count, setCount] = useState(0);
   const [items] = useState<string[]>([]);
 
+  const location = useLocation();
+
+  console.log(location);
+  
+
   return (
     <div className="Hooks">
       <Hello name={name} />
       <Counter count={0} onIncrement={() => setCount(count + 1)} />
       <Select items={['Romain', 'Konstantin', 'Samuel']} selected={name} onSelected={setName} />
+      <RegisterForm />
+      <ClockWithControls />
     </div>
   );
 }

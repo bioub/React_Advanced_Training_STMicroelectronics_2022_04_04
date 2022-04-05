@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Clock from './Clock';
+import ClockWithControls from './ClockWithControls';
 import Counter from './Counter';
 import Hello from './Hello';
 import RegisterForm from './RegisterForm';
@@ -47,10 +48,11 @@ class Basics extends Component<Props, State> {
         <Hello {...helloProps} />
         <Hello name={name} />
         <Select items={['Romain', 'Konstantin', 'Samuel']} selected={name} onSelected={this.handleSelected} />
-        <Clock />
+        {/* <Clock format="HH:mm" delay={60 * 1000} /> */}
         <Counter count={count} onIncrement={this.handleIncrement} />
         <Counter count={count} onIncrement={this.handleIncrement} />
         <RegisterForm />
+        <ClockWithControls />
       </div>
     );
   }
