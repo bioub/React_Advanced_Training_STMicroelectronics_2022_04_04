@@ -24,7 +24,7 @@ function Todos() {
   const handleAdd = () => {
     setTodos([
       {
-        id: (todos.at(-1)?.id ?? 0) + 1, // last id + 1
+        id: Math.random(),
         title: newTodo,
         completed: false,
       },

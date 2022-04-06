@@ -46,6 +46,8 @@ class Clock extends Component<Props, State> {
     clearInterval(this.interval);
   };
   render() {
+    // console.log('Clock renders');
+    
     const { format = 'HH:mm:ss' } = this.props;
     const { now } = this.state;
     return (

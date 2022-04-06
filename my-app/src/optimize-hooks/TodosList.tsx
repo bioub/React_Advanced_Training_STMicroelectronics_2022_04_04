@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { Todo } from './Todo';
 import TodoItem from './TodoItem';
 
@@ -6,6 +7,7 @@ type Props = {
 };
 
 function TodosList({ todos }: Props) {
+  console.log('TodosList renders');
   return (
     <div className="TodosList">
       {todos.map((t) => (
@@ -15,4 +17,4 @@ function TodosList({ todos }: Props) {
   );
 }
 
-export default TodosList;
+export default memo(TodosList);
