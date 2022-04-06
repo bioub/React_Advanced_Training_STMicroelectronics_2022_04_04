@@ -42,12 +42,16 @@ class Clock extends Component<Props, State> {
   componentWillUnmount() {
     clearInterval(this.interval);
   }
+  handleStop = () => {
+    clearInterval(this.interval);
+  };
   render() {
     const { format = 'HH:mm:ss' } = this.props;
     const { now } = this.state;
     return (
       <div className="Clock">
         Clock : {formatDate(now, format)}
+        <button onClick={this.handleStop}>Stop</button>
       </div>
     );
   }

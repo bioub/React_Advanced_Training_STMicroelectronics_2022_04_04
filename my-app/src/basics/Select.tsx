@@ -1,5 +1,5 @@
 import styles from './Select.module.css';
-import React, { Component } from 'react';
+import React, { Component, createRef, PointerEvent } from 'react';
 import classNames from 'classnames';
 
 type Props = {
@@ -16,12 +16,26 @@ class Select extends Component<Props, State> {
   state: State = {
     open: false,
   };
-  handleOpen = () => {
+  hostRef = createRef<HTMLDivElement>();
+  handleOpen = (event: PointerEvent<HTMLDivElement>) => {
+    // event.stopPropagation();
+    console.log('Select click');
     const { open } = this.state;
     this.setState({
       open: !open,
     });
   };
+  componentDidMount() {
+    document.addEventListener('click', (event) => {
+      console.log('document click');
+
+      if (!this.hostRef.current?.contains(event.target as Node)) {
+        this.setState({
+          open: false,
+        });
+      }
+    });
+  }
   render() {
     const { selected, items, onSelected } = this.props;
     const { open } = this.state;
@@ -35,7 +49,7 @@ class Select extends Component<Props, State> {
     // const array = items.map((item) => <div>{item}</div>);
 
     return (
-      <div className="Select" onClick={this.handleOpen}>
+      <div className="Select" onClick={this.handleOpen} ref={this.hostRef}>
         <div className={styles.selected}>{selected}</div>
         {open && (
           <div className={styles.menu}>

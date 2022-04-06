@@ -44,6 +44,7 @@ function Hooks() {
       <Select items={['Romain', 'Konstantin', 'Samuel']} selected={name} onSelected={setName} />
       <RegisterForm />
       <ClockWithControls />
+      <ClockWithControls />
     </div>
   );
 }

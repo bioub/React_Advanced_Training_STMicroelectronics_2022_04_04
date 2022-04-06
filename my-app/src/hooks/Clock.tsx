@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from 'react';
+import React, { Component, useEffect, useRef, useState } from 'react';
 import { format as formatDate } from 'date-fns';
 
 type Props = {
@@ -108,10 +108,35 @@ function useClock(delay: number) {
 //   );
 // }
 
-function Clock({ format = 'HH:mm:ss', delay = 1000 }: Props) {
-  const now = useClock(delay);
+// function Clock({ format = 'HH:mm:ss', delay = 1000 }: Props) {
+//   const now = useClock(delay);
 
-  return <div className="Clock">Clock : {formatDate(now, format)}</div>;
+//   return <div className="Clock">Clock : {formatDate(now, format)}</div>;
+// }
+
+function Clock({ format = 'HH:mm:ss', delay = 1000 }: Props) {
+  const [now, setNow] = useState(new Date());
+  const intervalRef = useRef<any>();
+  
+  useEffect(() => {
+    intervalRef.current = setInterval(() => {
+      setNow(new Date());
+    }, delay);
+    return () => {
+      clearInterval(intervalRef.current);
+    }
+  }, [delay]);
+
+  const handleStop = () => {
+    clearInterval(intervalRef.current);
+  };
+
+  return (
+    <div className="Clock">
+      Clock : {formatDate(now, format)}
+      <button onClick={handleStop}>Stop</button>
+    </div>
+  );
 }
 
 export default Clock;

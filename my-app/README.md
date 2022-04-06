@@ -47,3 +47,5 @@ Bonus : improve your code so that the color doesn't come from the param of the `
 Refactor `Select` and `RegisterForm` as function and use `useState` to manipulate the state.
 
 In `RegisterForm`, `useState` should only be called once (pass on object representing a `User` with 3 keys : `username`, `gender` and `subscription`)
+
+As in the `basics/Select.tsx`, listen to the click on document to close the menu if needed using `useRef` and `useEffect`.
