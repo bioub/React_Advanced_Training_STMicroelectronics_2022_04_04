@@ -1,5 +1,5 @@
 import styles from './Select.module.css';
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 type Props = {
   selected: string;
@@ -11,13 +11,24 @@ function Select({ selected, items, onSelected }: Props) {
   console.log('Select called');
   
   const [open, setOpen] = useState(false);
+  const hostRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    document.addEventListener('click', (event) => {
+      console.log('document click');
+
+      if (!hostRef.current?.contains(event.target as Node)) {
+        setOpen(false);
+      }
+    });
+  }, []);
 
   const handleOpen = () => {
     setOpen(!open);
   };
 
   return (
-    <div className="Select" onClick={handleOpen}>
+    <div className="Select" onClick={handleOpen} ref={hostRef}>
       <div className={styles.selected}>{selected}</div>
       {open && (
         <div className={styles.menu}>
