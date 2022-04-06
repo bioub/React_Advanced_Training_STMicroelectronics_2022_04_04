@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Select from './Select';
 import { Todo } from './Todo';
 import TodoForm from './TodoForm';
 import TodosList from './TodosList';
@@ -25,13 +26,16 @@ const initialTodos = (new Array(1000)).fill({}).map((t, i) => ({
 type State = {
   todos: Todo[];
   newTodo: string;
+  name: string;
 };
 
 class Todos extends Component {
   state: State = {
     todos: initialTodos,
     newTodo: '',
+    name: 'Romain',
   };
+  items = ['Romain', 'Konstantin', 'Samuel']
   setNewTodo = (newTodo: string) => {
     this.setState({
       newTodo,
@@ -56,15 +60,22 @@ class Todos extends Component {
       todos: todos.filter((t) => t.id !== todo.id),
     });
   }
+  handleSelected = (item: string) => {
+    this.setState({
+      name: item,
+    });
+  };
   render() {
     console.log('Todos renders');
-    const { newTodo, todos } = this.state;
+    const { newTodo, todos, name } = this.state;
     const { setNewTodo, handleAdd } = this;
     
     return (
       <div className="Todos">
         <TodoForm newTodo={newTodo} onNewTodoChange={setNewTodo} onAdd={handleAdd} />
         <TodosList todos={todos} onDelete={this.handleDelete} />
+
+        <Select items={this.items} selected={name} onSelected={this.handleSelected} />
       </div>
     );
   }

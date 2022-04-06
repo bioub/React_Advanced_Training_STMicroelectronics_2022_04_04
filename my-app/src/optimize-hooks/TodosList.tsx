@@ -8,6 +8,7 @@ type Props = {
 
 function TodosList({ todos }: Props) {
   console.log('TodosList renders');
+
   return (
     <div className="TodosList">
       {todos.map((t) => (

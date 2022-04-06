@@ -5,6 +5,7 @@ import Hello from './Hello';
 import RegisterForm from './RegisterForm';
 import ClockWithControls from './ClockWithControls';
 import { useLocation } from 'react-router-dom';
+import Countdown from './Countdown';
 
 // in a class component the state was an object
 // {
@@ -41,10 +42,11 @@ function Hooks() {
     <div className="Hooks">
       <Hello name={name} />
       <Counter count={0} onIncrement={() => setCount(count + 1)} />
-      <Select items={['Romain', 'Konstantin', 'Samuel']} selected={name} onSelected={setName} />
+      <Select items={['Romain', 'Konstantin', 'Samuel']} selected={name} onSelected={(v) => setName(v)} />
       <RegisterForm />
       <ClockWithControls />
       <ClockWithControls />
+      <Countdown />
     </div>
   );
 }
